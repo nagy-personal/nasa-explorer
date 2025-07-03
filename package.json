@@ -9,6 +9,7 @@
     "dev": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
     "dev:manual": "echo \"Starting backend...\" && yarn start:backend & echo \"Starting frontend...\" && yarn start:frontend",
     "build": "cd frontend && yarn build",
+    "vercel-build": "yarn install:all && cd frontend && yarn build",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "devDependencies": {
