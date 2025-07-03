@@ -62,7 +62,7 @@ A stunning web application showcasing NASA's space data with a modern, responsiv
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/nasa-explorer.git
+   git clone https://github.com/nagy-personal/nasa-explorer.git
    cd nasa-explorer
    ```
 
@@ -104,44 +104,60 @@ A stunning web application showcasing NASA's space data with a modern, responsiv
 
 ```
 nasa-explorer/
-├── backend/                 # Express.js API server
+├── api/                    # Vercel serverless functions
+│   ├── controllers/        # API route handlers
+│   ├── routes/            # API routes
+│   ├── middlewares/       # Express middlewares
+│   ├── config/            # Configuration files
+│   ├── utils/             # Utility functions
+│   ├── index.js           # Main API entry point
+│   └── package.json       # API dependencies
+├── backend/               # Original backend (for local development)
 │   ├── src/
-│   │   ├── controllers/     # API route handlers
-│   │   ├── routes/          # API routes
-│   │   ├── middlewares/     # Express middlewares
-│   │   ├── config/          # Configuration files
-│   │   └── utils/           # Utility functions
-│   └── server.js           # Server entry point
-├── frontend/               # React application
+│   │   ├── controllers/   # API route handlers
+│   │   ├── routes/        # API routes
+│   │   ├── middlewares/   # Express middlewares
+│   │   ├── config/        # Configuration files
+│   │   └── utils/         # Utility functions
+│   └── server.js          # Server entry point
+├── frontend/              # React application
 │   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── pages/          # Page components
-│   │   ├── services/       # API service functions
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── types/          # TypeScript type definitions
-│   │   └── config/         # Configuration files
-│   └── public/             # Static assets
-└── package.json           # Root package.json with scripts
+│   │   ├── components/    # React components
+│   │   ├── pages/         # Page components
+│   │   ├── services/      # API service functions
+│   │   ├── hooks/         # Custom React hooks
+│   │   ├── types/         # TypeScript type definitions
+│   │   └── config/        # Configuration files
+│   └── public/            # Static assets
+├── package.json           # Root package.json with scripts
+└── vercel.json           # Vercel deployment configuration
 ```
 
 ## 🌐 Deployment
 
-### Vercel Deployment
+### Vercel Deployment (Recommended)
 
-This project is configured for easy deployment on Vercel:
+This project is optimized for deployment on Vercel with serverless functions:
 
 1. **Connect to Vercel**
    - Push your code to GitHub
    - Connect your GitHub repository to Vercel
-   - Vercel will automatically detect the React frontend
+   - Vercel will automatically detect the configuration
 
 2. **Environment Variables**
-   - Add your NASA API key in Vercel's environment variables
-   - Set `REACT_APP_API_URL` to your backend URL
+   - Add your NASA API key in Vercel's environment variables:
+     - **Name**: `NASA_API_KEY`
+     - **Value**: Your NASA API key
+     - **Environment**: Production, Preview, Development
 
-3. **Backend Deployment**
-   - Deploy the backend to a service like Railway, Render, or Heroku
-   - Update the frontend's `REACT_APP_API_URL` to point to your deployed backend
+3. **Automatic Deployment**
+   - Vercel will automatically deploy both frontend and API
+   - The `api/` directory contains serverless functions
+   - The `frontend/` directory is built and served as static files
+
+4. **Custom Domain (Optional)**
+   - Configure your custom domain in Vercel dashboard
+   - All API calls will work with your custom domain
 
 ### Manual Deployment
 
@@ -164,15 +180,17 @@ This project is configured for easy deployment on Vercel:
 - `yarn start:backend` - Start only the backend server
 - `yarn start:frontend` - Start only the frontend server
 - `yarn build` - Build the frontend for production
+- `yarn vercel-build` - Build script for Vercel deployment
 
 ## 📊 API Endpoints
 
-The backend provides the following endpoints:
+The API provides the following endpoints:
 
 - `GET /api/health` - Health check
 - `GET /api/apod` - Astronomy Picture of the Day
 - `GET /api/epic` - Earth Polychromatic Imaging Camera data
-- `GET /api/mars-rover` - Mars Rover photos
+- `GET /api/mars-rover/:rover` - Mars Rover photos
+- `GET /api/mars-rovers` - Available Mars rovers
 - `GET /api/neo` - Near-Earth Objects data
 
 ## 🤝 Contributing
@@ -193,6 +211,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [React](https://reactjs.org/) for the amazing frontend framework
 - [Express.js](https://expressjs.com/) for the robust backend framework
 - [Tailwind CSS](https://tailwindcss.com/) for the beautiful styling
+- [Vercel](https://vercel.com/) for seamless deployment
 
 ## 📞 Support
 
