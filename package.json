@@ -1,0 +1,27 @@
+{
+  "name": "nasa-explorer",
+  "version": "1.0.0",
+  "description": "NASA Explorer - A stunning web application showcasing NASA's space data",
+  "scripts": {
+    "install:all": "cd backend && yarn install && cd ../frontend && yarn install",
+    "start:backend": "cd backend && yarn dev",
+    "start:frontend": "cd frontend && yarn start",
+    "dev": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "dev:manual": "echo \"Starting backend...\" && yarn start:backend & echo \"Starting frontend...\" && yarn start:frontend",
+    "build": "cd frontend && yarn build",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "nasa",
+    "space",
+    "astronomy",
+    "react",
+    "nodejs",
+    "api"
+  ],
+  "author": "NASA Explorer Team",
+  "license": "MIT"
+} 
