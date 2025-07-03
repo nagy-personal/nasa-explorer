@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 // Import the existing routes
-const routes = require('../backend/src/routes');
+const routes = require('./routes');
 
 const app = express();
 
